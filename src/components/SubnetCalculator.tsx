@@ -206,7 +206,6 @@ export default function SubnetCalculator() {
           </p>
         </header>
 
-        {/* Tabla de clases */}
         <section className="mb-12">
           <h2 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
             Clases de IP
@@ -235,7 +234,6 @@ export default function SubnetCalculator() {
           </div>
         </section>
 
-        {/* Formulario */}
         <section className="mb-12">
           <h2 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
             Parametros
@@ -286,7 +284,6 @@ export default function SubnetCalculator() {
 
         {result && (
           <>
-            {/* Clase detectada */}
             {result.ipClass && (
               <section className="mb-12">
                 <h2 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
@@ -304,7 +301,6 @@ export default function SubnetCalculator() {
               </section>
             )}
 
-            {/* Pasos */}
             <section className="mb-12">
               <h2 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
                 Proceso de Calculo
@@ -324,7 +320,6 @@ export default function SubnetCalculator() {
               </div>
             </section>
 
-            {/* Tabla de subredes */}
             {result.subnets.length > 0 && (
               <section className="mb-12">
                 <h2 className="text-xs uppercase tracking-widest text-neutral-500 mb-4">
@@ -359,7 +354,6 @@ export default function SubnetCalculator() {
                   </table>
                 </div>
 
-                {/* Resumen */}
                 <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-neutral-900">
                   <div>
                     <p className="text-xs text-neutral-600 uppercase tracking-wide">Subredes</p>
