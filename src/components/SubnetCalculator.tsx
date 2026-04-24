@@ -38,9 +38,6 @@ export default function SubnetCalculator() {
           <h1 className="text-2xl text-neutral-100 font-medium tracking-tight">
             Calculadora de Subredes IPv4
           </h1>
-          <p className="text-neutral-500 text-sm mt-1">
-            Subnetting con pasos detallados
-          </p>
         </header>
 
         <IPClassesTable />
@@ -70,7 +67,9 @@ export default function SubnetCalculator() {
         )}
 
         <footer className="text-xs text-neutral-700 border-t border-neutral-900 pt-6">
-          IPv4 Subnet Calculator
+          IPv4 Subnet Calculator <a href="https://github.com/CastDev-j/subnetter" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            Repositorio
+          </a>
         </footer>
       </div>
     </main>
