@@ -66,7 +66,7 @@ export default function SubnetCalculator() {
           </>
         )}
 
-        <footer className="text-xs text-neutral-700 border-t border-neutral-900 pt-6">
+        <footer className="text-xs text-neutral-600 border-t border-neutral-900 pt-6">
           IPv4 Subnet Calculator <a href="https://github.com/CastDev-j/subnetter" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
             Repositorio
           </a>
