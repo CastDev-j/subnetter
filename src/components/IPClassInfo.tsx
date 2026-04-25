@@ -14,7 +14,7 @@ export default function IPClassInfo({ ipClass }: IPClassInfoProps) {
         <span className="text-3xl text-neutral-100">{ipClass.class}</span>
         <div>
           <p className="text-neutral-400">{ipClass.description}</p>
-          <p className="text-xs text-neutral-600 mt-1">
+          <p className="text-xs text-neutral-500 mt-1">
             Mascara: {ipClass.defaultMask} (/{ipClass.defaultCIDR})
           </p>
         </div>
