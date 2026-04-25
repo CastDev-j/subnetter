@@ -1,5 +1,6 @@
 ---
 import SubnetCalculator from "../components/SubnetCalculator";
+import ToggleTheme from "../components/ToggleTheme.astro";
 import "../styles/global.css";
 
 ---
@@ -37,7 +38,8 @@ import "../styles/global.css";
 		<meta name="twitter:image" content="/og.png" />
 		<meta name="twitter:image:alt" content="Calculadora de Subredes IPv4" />
 	</head>
-	<body>
+	<body class="relative">
 		<SubnetCalculator client:load/>
+		<ToggleTheme />
 	</body>
 </html>

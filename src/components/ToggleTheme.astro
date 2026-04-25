@@ -1,0 +1,127 @@
+---
+---
+
+<div class="fixed bottom-4 right-4">
+  <button
+    class="theme-toggle text-primary-100"
+    type="button"
+    title="Toggle theme"
+    aria-label="Toggle theme"
+  >
+    <svg
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      class="theme-toggle__inner-moon size-10"
+      viewBox="0 0 32 32"
+    >
+      <path
+        d="M27.5 11.5v-7h-7L16 0l-4.5 4.5h-7v7L0 16l4.5 4.5v7h7L16 32l4.5-4.5h7v-7L32 16l-4.5-4.5zM16 25.4a9.39 9.39 0 1 1 0-18.8 9.39 9.39 0 1 1 0 18.8z"
+      ></path>
+      <circle cx="16" cy="16" r="8.1"></circle>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .theme-toggle__inner-moon path {
+    transition: transform 0.5s ease;
+    transform-origin: 16px 16px;
+    transform-box: view-box;
+  }
+
+  :global(.dark) .theme-toggle__inner-moon path {
+    transform: rotate(180deg);
+  }
+
+  .theme-toggle__inner-moon circle {
+    transition: transform 0.5s ease;
+    transform-origin: 16px 16px;
+    transform-box: view-box;
+  }
+
+  :global(.dark) .theme-toggle__inner-moon circle {
+    transform: translateX(5px);
+  }
+</style>
+
+<script is:inline>
+  const loadTheme = () => {
+    const theme = localStorage?.getItem("theme") ?? "light";
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const handleToggleClick = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    const applyTheme = () => {
+      document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+    };
+
+    if (!document.startViewTransition) {
+      applyTheme();
+    } else {
+      document.startViewTransition(applyTheme);
+    }
+  };
+
+  const setupThemeToggle = () => {
+    const themeButton = document.querySelector(".theme-toggle");
+    if (themeButton) {
+      themeButton.onclick = handleToggleClick;
+    }
+  };
+
+  document.addEventListener("astro:after-swap", loadTheme);
+  document.addEventListener("astro:page-load", setupThemeToggle);
+
+  loadTheme();
+  setupThemeToggle();
+</script>
+
+<style is:global>
+  ::view-transition-group(root) {
+    animation-duration: 0.7s;
+    animation-timing-function: var(--expo-out);
+  }
+
+  ::view-transition-new(root) {
+    animation-name: reveal-light;
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-old(root),
+  .dark::view-transition-old(root) {
+    animation: none;
+    animation-fill-mode: both;
+    z-index: -1;
+  }
+
+  .dark::view-transition-new(root) {
+    animation-name: reveal-dark;
+    animation-fill-mode: both;
+  }
+
+  @keyframes reveal-dark {
+    from {
+      clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+    }
+    to {
+      clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+    }
+  }
+
+  @keyframes reveal-light {
+    from {
+      clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+    }
+    to {
+      clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+    }
+  }
+</style>
