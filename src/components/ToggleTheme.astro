@@ -1,9 +1,9 @@
 ---
 ---
 
-<div class="fixed bottom-4 right-4">
+<div class="fixed bottom-4 right-4 ">
   <button
-    class="theme-toggle text-primary-100"
+    class="theme-toggle text-primary-100 bg-primary-950 rounded-full"
     type="button"
     title="Toggle theme"
     aria-label="Toggle theme"
@@ -90,7 +90,7 @@
   }
 
   ::view-transition-new(root) {
-    mask: url('/happy.gif') center / 0 no-repeat;
+    mask: url('/happy.gif') bottom right / 0 no-repeat;
     animation: scale 2.5s;
     animation-fill-mode: both;
   }
@@ -107,12 +107,15 @@
     }
     10% {
       mask-size: 30vmax;
+      mask-position: bottom right;
     }
     90% {
       mask-size: 30vmax;
+      mask-position: bottom right;
     }
     100% {
       mask-size: 1000vmax;
+      mask-position: center center;
     }
   }
 </style>
