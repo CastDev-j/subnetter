@@ -86,42 +86,33 @@
 
 <style is:global>
   ::view-transition-group(root) {
-    animation-duration: 0.7s;
-    animation-timing-function: var(--expo-out);
+    animation-timing-function: var(--expo-in);
   }
 
   ::view-transition-new(root) {
-    animation-name: reveal-light;
+    mask: url('/happy.gif') center / 0 no-repeat;
+    animation: scale 2.5s;
     animation-fill-mode: both;
   }
 
   ::view-transition-old(root),
   .dark::view-transition-old(root) {
-    animation: none;
-    animation-fill-mode: both;
-    z-index: -1;
-  }
-
-  .dark::view-transition-new(root) {
-    animation-name: reveal-dark;
+    animation: scale 2s;
     animation-fill-mode: both;
   }
 
-  @keyframes reveal-dark {
-    from {
-      clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+  @keyframes scale {
+    0% {
+      mask-size: 0;
     }
-    to {
-      clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+    10% {
+      mask-size: 30vmax;
     }
-  }
-
-  @keyframes reveal-light {
-    from {
-      clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+    90% {
+      mask-size: 30vmax;
     }
-    to {
-      clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+    100% {
+      mask-size: 1000vmax;
     }
   }
 </style>
